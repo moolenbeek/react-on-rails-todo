@@ -12,10 +12,11 @@
 default: &default
   adapter: mysql2
   encoding: utf8mb4
-  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  pool: 5
+  username: eric
+  password: <%= Rails.application.credentials.dig(:database, :password) %>
+  host: 192.168.10.135
+  port: 3306
 
 development:
   <<: *default
