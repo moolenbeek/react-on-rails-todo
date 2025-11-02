@@ -1,9 +1,9 @@
 class CreateTodos < ActiveRecord::Migration[8.1]
   def change
     create_table :todos do |t|
-      t.string :title
+      t.string :title, null: false
       t.text :description
-      t.boolean :completed
+      t.boolean :completed, default: false
       t.string :category
       t.date :due_date
 
@@ -11,3 +11,4 @@ class CreateTodos < ActiveRecord::Migration[8.1]
     end
   end
 end
+
