@@ -1,6 +1,9 @@
 module Api
   module V1
     class TodosController < ApplicationController
+      # For JSON API endpoints, don't raise on CSRF token missing for API clients.
+      protect_from_forgery with: :null_session
+      before_action -> { request.format = :json }
       before_action :set_todo, only: [:show, :update, :destroy]
 
       # GET /api/v1/todos
